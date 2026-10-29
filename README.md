@@ -3,7 +3,7 @@
 Code accompanying "**Conformational Dynamics and Disorder of HPV-16 E6**" by Liam Kwak and Roberto A. Garza-López (Pomona College).
 
 - Paper: Kwak, L.; Garza-López, R. A. *J. Phys. Chem. B* **2026**. <https://doi.org/10.1021/acs.jpcb.6c04908>
-- Trajectories and large data: Zenodo, <https://doi.org/10.5281/zenodo.XXXXXXX>
+- Trajectories: Zenodo, <https://doi.org/10.5281/zenodo.23779443>
 
 ## Repository contents
 
@@ -31,20 +31,28 @@ Scripts for the following were not recovered and are not in this repository: Fig
 
 ## Trajectories (Zenodo)
 
-The trajectories are not stored in this repository. Download them from Zenodo into `trajectories/`, which git ignores:
+The trajectories are archived on Zenodo, not in this repository: Kwak, L.; Garza-López, R. A. *Trajectories from "Conformational Dynamics and Disorder of HPV-16 E6"*, Zenodo, 2026, <https://doi.org/10.5281/zenodo.23779443> (CC-BY-4.0).
+
+| Zenodo file | Contents | Method | Saved frames | Atoms |
+|---|---|---|---|---|
+| `apo-16E6_unbiasedmd.zip` (352 MB) | Replicates 1–3 (10 µs each) and 4 (5 µs) as separate XTCs, the combined 35 µs XTC, and the topology | Desmond, OPLS4, 310 K | 1 ns | Protein heavy atoms (1,279; no H, Zn, solvent) |
+| `apo-16E6_wtmetad.zip` (5.0 GB) | Five WT-MetaD replicates (runs dated 8.10.25–8.14.25), 1 µs each, and the topology | Desmond WT-MetaD, kTemp 8.4 | 10 ps (99,982 frames each) | Protein incl. H (2,547; no Zn, solvent) |
+
+The combined `apo-16E6_unbiasedmd_combined_35us.xtc` joins the unbiased replicates in the order 1, 2, 4, 3, which is the order the MSM, ELViM and common-metrics scripts expect; its time restarts at 0 for each replicate. The XTC files are stripped for analysis and visualization and cannot be used to restart the simulations.
+
+Download into `trajectories/` (ignored by git) and link the unbiased files to the names the scripts use:
 
 ```bash
 mkdir -p trajectories && cd trajectories
-wget https://zenodo.org/records/XXXXXXX/files/apo16E6_unbiased_35us_protein.tar.gz
-tar -xzf apo16E6_unbiased_35us_protein.tar.gz
+curl -L -o apo-16E6_unbiasedmd.zip "https://zenodo.org/records/23779443/files/apo-16E6_unbiasedmd.zip?download=1"
+curl -L -o apo-16E6_wtmetad.zip "https://zenodo.org/records/23779443/files/apo-16E6_wtmetad.zip?download=1"
+unzip apo-16E6_unbiasedmd.zip && unzip apo-16E6_wtmetad.zip
+ln -s apo-16E6_unbiasedmd/apo-16E6_unbiasedmd_combined_35us.xtc trajectory_35us.xtc
+for r in 1_10us 2_10us 3_10us 4_5us; do ln -s apo-16E6_unbiasedmd/apo-16E6_unbiasedmd_replicate_$r.xtc replicate_$r.xtc; done
+cd ..
 ```
 
-| Data | Method | Length | Frames | File |
-|---|---|---|---|---|
-| Unbiased MD, 4 replicates (protein + Zn, solvent removed) | Desmond, OPLS4, 310 K | 35 µs | 1 ns stride | `apo16E6_unbiased_35us_protein.tar.gz` |
-| WT-MetaD, 5 replicates (solvent removed) + bias files | Desmond WT-MetaD | 5 × 1 µs | <stride> | `apo16E6_wtmetad.tar.gz` |
-| BioEmu ensemble | BioEmu | – | <n> | `apo16E6_bioemu.tar.gz` |
-| Saved MSM and TICA models | deeptime | – | – | `apo16E6_msm_models.tar.gz` |
+The unbiased topology in the zip is identical to `structures/topology_apo16e6.pdb`.
 
 ## Environment
 

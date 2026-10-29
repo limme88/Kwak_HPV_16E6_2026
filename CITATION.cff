@@ -43,3 +43,19 @@ preferred-citation:
   year: 2026
   month: 10
   doi: "10.1021/acs.jpcb.6c04908"
+references:
+  - type: data
+    title: 'Trajectories from "Conformational Dynamics and Disorder of HPV-16 E6"'
+    authors:
+      - family-names: Kwak
+        given-names: Liam
+        orcid: "https://orcid.org/0009-0009-4949-9686"
+      - family-names: Garza-López
+        given-names: Roberto A.
+        orcid: "https://orcid.org/0000-0002-9363-1842"
+    publisher:
+      name: Zenodo
+    year: 2026
+    doi: "10.5281/zenodo.23779443"
+    url: "https://zenodo.org/records/23779443"
+    license: CC-BY-4.0
