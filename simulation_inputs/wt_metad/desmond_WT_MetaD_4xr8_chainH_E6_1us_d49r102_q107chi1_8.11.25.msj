@@ -1,0 +1,154 @@
+# Desmond standard NPT relaxation protocol
+# All times are in the unit of ps.
+# Energy is in the unit of kcal/mol.
+task {
+  task = "desmond:auto"
+  set_family = {
+    desmond = {
+      checkpt.write_last_step = no
+    }
+  }
+}
+
+simulate {
+  title       = "Brownian Dynamics NVT, T = 10 K, small timesteps, and restraints on solute heavy atoms, 100ps"
+  annealing   = off
+  time        = 100
+  timestep    = [0.001 0.001 0.003 ]
+  temperature = 10.0
+  ensemble = {
+    class  = "NVT"
+    method = "Brownie"
+    brownie = {
+      delta_max = 0.1
+    }
+  }
+  polarization_restraints = full
+  restraints.new = [
+    {
+      name            = posre_harm
+      atoms           = solute_heavy_atom
+      force_constants = 50.0
+    }
+  ]
+  eneseq.interval = 0.3
+}
+
+simulate {
+  title                   = "NVT, T = 10 K, small timesteps, and restraints on solute heavy atoms, 12ps"
+  annealing               = off
+  time                    = 12
+  timestep                = [0.001 0.001 0.003]
+  temperature             = 10.0
+  polarization_restraints = full
+  restraints.new = [
+    {
+      name            = posre_harm
+      atoms           = solute_heavy_atom
+      force_constants = 50.0
+    }
+  ]
+  ensemble = {
+    class          = NVT
+    method         = Langevin
+    thermostat.tau = 0.1
+  }
+
+  randomize_velocity.interval = 1.0
+  eneseq.interval             = 0.3
+  trajectory.center           = []
+}
+
+simulate {
+  title                   = "NPT, T = 10 K, and restraints on solute heavy atoms, 12ps"
+  annealing               = off
+  time                    = 12
+  temperature             = 10.0
+  polarization_restraints = full
+  restraints.existing     = retain
+  ensemble = {
+    class          = NPT
+    method         = Langevin
+    thermostat.tau = 0.1
+    barostat  .tau = 50.0
+  }
+
+  randomize_velocity.interval = 1.0
+  eneseq.interval             = 0.3
+  trajectory.center           = []
+}
+
+simulate {
+  title                   = "NPT and restraints on solute heavy atoms, 12ps"
+  effect_if               = [["@*.*.annealing"] 'annealing = off temperature = "@*.*.temperature[0][0]"']
+  time                    = 12
+  polarization_restraints = full
+  restraints.existing     = retain
+  ensemble = {
+    class          = NPT
+    method         = Langevin
+    thermostat.tau = 0.1
+    barostat  .tau = 50.0
+  }
+
+  randomize_velocity.interval = 1.0
+  eneseq.interval             = 0.3
+  trajectory.center           = []
+}
+
+simulate {
+  title     = "NPT and no restraints, 24ps"
+  effect_if = [["@*.*.annealing"] 'annealing = off temperature = "@*.*.temperature[0][0]"']
+  time      = 24
+  ensemble = {
+    class          = NPT
+    method         = Langevin
+    thermostat.tau = 0.1
+    barostat  .tau = 2.0
+  }
+  polarization_restraints = decay
+  eneseq.interval         = 0.3
+  trajectory.center       = solute
+}
+
+simulate {
+   cfg_file = "desmond_WT_MetaD_4xr8_chainH_E6_1us_d49r102_q107chi1_8.11.25.cfg"
+   jobname  = "$MAINJOBNAME"
+   dir      = "."
+   compress = ""
+   meta = {
+kTemp = 8.4
+      cv = [
+         {atom = ["atom.n 839,838,837,836,835,834,833,832,831,830,829,828" "atom.n 1720,1719,1718,1717,1716,1715,1714,1713,1712,1711,1710,1697,1698,1699,1700,1701,1702,1703,1704,1705,1706,1707,1708,1709" ]
+          type = dist
+          wall = 40
+          width = 0.8
+         }
+
+         {atom = [1774 1775 1778 1779 ]
+          type = dihedral
+          width = 12.0
+         }
+      ]
+      cv_name = "$JOBNAME$[_replica$REPLICA$].cvseq"
+      first = 0.0
+      height = 0.3
+      interval = 10.0
+      name = "$JOBNAME$[_replica$REPLICA$].kerseq"
+   } 
+           backend ={
+               # set cvseq interval to trajectory output
+               force.term.ES.interval = '@*.*.*.*.trajectory.interval'
+           }
+           checkpt.write_last_step = yes
+        
+}
+
+analysis {
+    meta = { }
+    dir = "."
+    compress = ""
+}
+
+# Job launching command:
+# $SCHRODINGER/utilities/multisim -VIEWNAME desmond_metadynamics_gui.MetadynamicsApp -JOBNAME desmond_WT_MetaD_4xr8_chainH_E6_1us_d49r102_q107chi1_8.11.25 -HOST localhost -maxjob 1 -cpu 1 -m desmond_WT_MetaD_4xr8_chainH_E6_1us_d49r102_q107chi1_8.11.25.msj -c desmond_WT_MetaD_4xr8_chainH_E6_1us_d49r102_q107chi1_8.11.25.cfg -description Metadynamics desmond_WT_MetaD_4xr8_chainH_E6_1us_d49r102_q107chi1_8.11.25.cms -mode umbrella -PROJ results/E6_simulations_metaD.prj -DISP append -o desmond_WT_MetaD_4xr8_chainH_E6_1us_d49r102_q107chi1_8.11.25-out.cms -lic DESMOND_GPGPU:16

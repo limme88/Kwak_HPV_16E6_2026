@@ -1,0 +1,7 @@
+metric,display_name,units,definition
+e6hl_helix_fraction_H_or_G,E6HL helix fraction,fraction,"Number of manuscript E6 residues 62-79 assigned DSSP H or G, divided by 18. DSSP I is not counted in this common metric."
+d49_r102_ca_distance_A,D49-R102 C-alpha distance,angstrom,Euclidean distance between the D49 and R102 C-alpha atoms.
+q107_chi1_deg,Q107 chi1,degree,"Signed N-CA-CB-CG torsion in [-180, 180] degrees using the Desmond/Schrodinger sign convention. Ensemble means are circular."
+tail_ca130_ca151_distance_A,C-terminal-tail extension,angstrom,Euclidean C-alpha(130)-C-alpha(151) extension coordinate. The structural tail is residues 140-151; residue 130 is the core anchor.
+lxxll_aperture_all_heavy_A,LxxLL groove aperture (angstroms),angstrom,"Mean of 104 per-residue-pair minimum heavy-atom distances: all 8 N-wall residues x all 13 C-wall residues. N wall = 31,32,33,45,48-51; C wall = 100,101,102,106,107,109,127-133."
+lxxll_aperture_common_N_CA_C_O_CB_A,Common-atom aperture surrogate (angstroms),angstrom,"Same 104 residue pairs as the primary aperture, but distances use only N, CA, C, O, and CB atoms (CB absent for glycine). This is an atom-matched surrogate, not the manuscript all-heavy-atom metric."

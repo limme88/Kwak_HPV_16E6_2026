@@ -2,15 +2,26 @@ name: e6-md
 channels:
   - conda-forge
 dependencies:
-  - python=3.11
-  - numpy
+  # These versions are recorded in the final MSM/DSSP output manifests.
+  - python=3.11.14
+  - numpy=2.4.2
+  - matplotlib=3.10.8
+  - mdtraj=1.11.1
+  - deeptime=0.4.5
+  # pandas 2.3.3 is the environment used to verify the retained Figure 5 plot.
+  - pandas=2.3.3
   - scipy
-  - pandas
-  - matplotlib
-  - seaborn
-  - mdtraj
-  - mdanalysis
-  - deeptime
-  - scikit-learn
   - jupyter
-  # Edit this list to match the imports in your scripts
+  - nbconvert
+  - ipykernel
+  - pip
+  - pip:
+      - pyblock @ git+https://github.com/jsspencer/pyblock.git@a293b5b75dfa862def45a077824aa8df08bcbf46
+# schrodinger is imported by native Desmond analysis: use the separately licensed
+# Schrodinger 2026-1 Python for those commands (see analysis/06_wt_metad).
+# wtmetad_5rep_reweight_basins is a repository-local module, not a pip package.
+# Other imports are Python standard-library modules.
+# There was no single original environment. Chemical-shift comparison recorded
+# NumPy 1.26.4, pandas 2.3.1, SciPy 1.13.1, Matplotlib 3.9.4; its DSSP stage
+# recorded NumPy 2.3.5 / MDTraj 1.11.1. See the folder README for external
+# SPARTA+, Delta2D, and exact pyblock source-version evidence.

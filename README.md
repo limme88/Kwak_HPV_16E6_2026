@@ -59,4 +59,4 @@ Desmond and Maestro (Schrödinger 2023-1 / 2025-2) were used to set up and run t
 
 ## Citation
 
-Please cite the paper above if you use this code (see `CITATION.cff`).
+Please cite the paper above if you use this code (see `CITATION.cff`). The code is released under the MIT License (see `LICENSE`); the trajectories on Zenodo are released under CC-BY-4.0.
