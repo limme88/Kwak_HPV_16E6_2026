@@ -1,6 +1,23 @@
 cff-version: 1.2.0
 message: "If you use this code, please cite the paper below."
+type: software
 title: "Code accompanying: Conformational Dynamics and Disorder of HPV-16 E6"
+version: 1.0.0
+abstract: >-
+  Analysis code and simulation input files for the J. Phys. Chem. B paper
+  "Conformational Dynamics and Disorder of HPV-16 E6". Includes Desmond inputs
+  for 35 µs of unbiased MD and five well-tempered metadynamics replicates of
+  apo HPV-16 E6, and scripts for Markov state modeling, metadynamics free-energy
+  surfaces, secondary structure, structural observables, BioEmu ensemble
+  metrics, and SPARTA+/Delta2D comparison with NMR chemical shifts.
+  MD trajectories are archived separately on Zenodo.
+keywords:
+  - HPV-16 E6
+  - molecular dynamics
+  - intrinsically disordered regions
+  - metadynamics
+  - Markov state model
+  - BioEmu
 authors:
   - family-names: Kwak
     given-names: Liam
