@@ -27,7 +27,7 @@ Each `analysis/` folder has its own README with exact commands and required inpu
 
 ### Not included
 
-Scripts for the following were not recovered and are not in this repository: Fig. 1 (structure views), Fig. 3 (time series, KDE, SASA panels), Fig. 4 (ELViM projection), Fig. 5a–c (TICA landscape and basins), Fig. S3, BioEmu generation, and the molecular renderings and panel composition in Figs. 2 and 5–7.
+Scripts for the following are not in this repository: Fig. 1 (structure views), Fig. 3 (time series, KDE, SASA panels), Fig. 4 (ELViM projection), Fig. 5a–c (TICA landscape and basins), Fig. S3, BioEmu generation, and the molecular renderings and panel composition in Figs. 2 and 5–7.
 
 ## Trajectories (Zenodo)
 
