@@ -24,7 +24,7 @@ $(echo "$FILES" | xargs grep -IlE 'gh[opsu]_[A-Za-z0-9]{20,}|sk-[A-Za-z0-9_-]{20
 section "Hard-coded personal or cluster paths (replace with relative paths)"
 report paths "$(echo "$FILES" | xargs grep -InE '/Users/[A-Za-z]|/bigdata/|/rhome/|/home/[a-z]' 2>/dev/null | cut -c1-160)"
 
-section "Codex / agent working files"
+section "Working notes and handoff files"
 report agent "$(echo "$FILES" | grep -Ei 'AGENTS\.md|PROJECT_(CONTEXT|MEMORY)\.md|HANDOFF|handoff|/\.codex/|\.sha256$|audit')"
 
 section "Third-party code that may not be redistributable (link to it instead)"

@@ -24,7 +24,7 @@ __pycache__/
 .ipynb_checkpoints/
 node_modules/
 
-# Codex / agent working files
+# Working notes and handoff files
 AGENTS.md
 PROJECT_CONTEXT.md
 PROJECT_MEMORY.md
@@ -45,3 +45,6 @@ tmp/
 # Personal working notes (keep local)
 ZENODO_RECORD.md
 ZENODO_CHECKLIST.md
+
+# Generated outputs
+results/
