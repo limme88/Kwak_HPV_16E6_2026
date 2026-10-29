@@ -5,18 +5,24 @@ authors:
   - family-names: Kwak
     given-names: Liam
     affiliation: "Pomona College"
+    orcid: "https://orcid.org/0009-0009-4949-9686"
   - family-names: Garza-López
     given-names: Roberto A.
     affiliation: "Pomona College"
+    orcid: "https://orcid.org/0000-0002-9363-1842"
+license: MIT
+repository-code: "https://github.com/limme88/Kwak_HPV_16E6_2026"
 preferred-citation:
   type: article
   title: "Conformational Dynamics and Disorder of HPV-16 E6"
   authors:
     - family-names: Kwak
       given-names: Liam
+      orcid: "https://orcid.org/0009-0009-4949-9686"
     - family-names: Garza-López
       given-names: Roberto A.
-  journal: "<Journal>"
+      orcid: "https://orcid.org/0000-0002-9363-1842"
+  journal: "The Journal of Physical Chemistry B"
   year: 2026
-  doi: "<10.xxxx/xxxxx>"
-license: MIT
+  month: 10
+  doi: "10.1021/acs.jpcb.6c04908"

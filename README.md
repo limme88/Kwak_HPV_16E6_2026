@@ -2,8 +2,7 @@
 
 Code accompanying "**Conformational Dynamics and Disorder of HPV-16 E6**" by Liam Kwak and Roberto A. Garza-López (Pomona College).
 
-- Paper: <journal, year, DOI>
-- Preprint: ChemRxiv, <https://doi.org/10.26434/chemrxiv-2025-hvzpc>
+- Paper: Kwak, L.; Garza-López, R. A. *J. Phys. Chem. B* **2026**. <https://doi.org/10.1021/acs.jpcb.6c04908>
 - Trajectories and large data: Zenodo, <https://doi.org/10.5281/zenodo.XXXXXXX>
 
 ## Repository contents
