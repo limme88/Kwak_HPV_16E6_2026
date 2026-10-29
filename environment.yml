@@ -1,0 +1,16 @@
+name: e6-md
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - numpy
+  - scipy
+  - pandas
+  - matplotlib
+  - seaborn
+  - mdtraj
+  - mdanalysis
+  - deeptime
+  - scikit-learn
+  - jupyter
+  # Edit this list to match the imports in your scripts

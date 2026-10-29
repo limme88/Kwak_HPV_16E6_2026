@@ -1,0 +1,47 @@
+# Trajectories and other large data go to Zenodo, not GitHub
+trajectories/
+*.xtc
+*.trr
+*.dcd
+*.nc
+*.dtr
+*.h5
+*.cpt
+*.edr
+*.tpr
+*.tar.gz
+*.zip
+
+# Secrets and licenses (never commit)
+*.env
+*LICENSE*.env
+*.lic
+
+# OS and Python clutter
+.DS_Store
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+node_modules/
+
+# Codex / agent working files
+AGENTS.md
+PROJECT_CONTEXT.md
+PROJECT_MEMORY.md
+.codex/
+tmp/
+*.sha256
+.mplconfig/
+
+# Desmond / Schrödinger outputs that belong on Zenodo
+*_trj/
+*.cms
+!simulation_inputs/**/*.cms
+*.maegz
+*.ene
+*.log
+*.err
+
+# Personal working notes (keep local)
+ZENODO_RECORD.md
+ZENODO_CHECKLIST.md

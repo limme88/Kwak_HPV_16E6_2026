@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the paper below."
+title: "Code accompanying: Conformational Dynamics and Disorder of HPV-16 E6"
+authors:
+  - family-names: Kwak
+    given-names: Liam
+    affiliation: "Pomona College"
+  - family-names: Garza-López
+    given-names: Roberto A.
+    affiliation: "Pomona College"
+preferred-citation:
+  type: article
+  title: "Conformational Dynamics and Disorder of HPV-16 E6"
+  authors:
+    - family-names: Kwak
+      given-names: Liam
+    - family-names: Garza-López
+      given-names: Roberto A.
+  journal: "<Journal>"
+  year: 2026
+  doi: "<10.xxxx/xxxxx>"
